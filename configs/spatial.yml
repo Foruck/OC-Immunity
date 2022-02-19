@@ -1,0 +1,40 @@
+MODE: spatial_classifier
+
+F_keys: ['sp']
+L_keys: ['labels_r']
+DATA_DIR: ['data/hico']
+
+TRAIN:
+  DATASET:
+    BATCH_SIZE: [90]
+    NUM_NEG: 3
+    NUM_WORKERS: 4
+    SAMPLER_NAME: "priority_object"
+    JITTERING: True
+  MAX_EPOCH: 100
+  OPTIMIZER:
+    TYPE: SGD
+    RESUME: False
+    lr: 7e-3
+    momentum: 0.9
+    weight_decay: 1e-7
+    alpha: 0.99
+    eps: 1e-8
+    GROUP: 'ALL'
+    KW: 'mean.fc_out.weight'
+    KB: 'mean.fc_out.bias'
+  
+TEST:
+  BATCH_SIZE: 270
+  NUM_WORKERS: 4
+
+MODEL:
+  ACT: 'ReLU'
+  KEY: ['sp', 'labels_r']
+  LAYER_SIZE: [42, 128, 256]
+  NUM_CLASSES: 117
+  BN: True
+  UNSUP_FAC: 0
+  CHECKPOINT: 
+    
+  

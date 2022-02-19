@@ -1,0 +1,70 @@
+MODE: unified_classifier
+
+F_keys: ['dense', 'feat', 'sp']
+L_keys: ['labels_s', 'labels_o', 'labels_r']
+DATA_DIR: ['data/hico', 'data/openimage']
+
+TRAIN:
+  DATASET:
+    BATCH_SIZE: [48, 24]
+    NUM_WORKERS: 3
+    SAMPLER_NAME: "priority_object"
+    JITTERING: True
+  MAX_EPOCH: 100
+  OPTIMIZER:
+    TYPE: SGD
+    RESUME: False
+    lr: 1e-3
+    momentum: 0.9
+    weight_decay: 1e-7
+    alpha: 0.99
+    eps: 1e-8
+    GROUP: 'ALL'
+    KW: 
+    KB: 
+  
+TEST:
+  BATCH_SIZE: 48
+  NUM_WORKERS: 2
+
+MODEL:
+  CHECKPOINT: 
+  KEY: ['labels_s', 'labels_o', 'labels_r']
+  CONSIST_FAC: 0.5
+  FUSION:
+    NUM_CLASSES: 117
+  SPATIAL:
+    ACT: 'ReLU'
+    KEY: ['sp', 'labels_r']
+    LAYER_SIZE: [42, 128, 256]
+    NUM_CLASSES: 117
+    BN: True
+    UNSUP_FAC: 0.0
+    CHECKPOINT: exp/sp_2/bst.pth
+  HUMAN: 
+    ENCODER:
+      RESNET: False
+      BN: True
+      LAYER_SIZE: [3, 256, 512]
+      KERNEL_SIZE: [0, 5, 3]
+      PADDING: [0, 2, 1]
+      ACT: 'ReLU'
+    ACT: 'ReLU'
+    KEY: ['dense', 'labels_s']
+    LAYER_SIZE: [512, 256]
+    NUM_CLASSES: 117
+    BN: True
+    UNSUP_FAC: 0.0
+    CHECKPOINT: exp/human_13/bst.pth
+  OBJECT:
+    ACT: 'ReLU'
+    KEY: ['feat', 'labels_o']
+    SYN:
+      LAYER_SIZE: [4096, 3072, 2048]
+    LAYER_SIZE: [2048, 768, 512]
+    NUM_CLASSES: 117
+    BN: True
+    UNSUP_FAC: 0.0
+    CHECKPOINT: exp/o_3/bst.pth
+    
+  

@@ -1,0 +1,41 @@
+MODE: object_classifier
+
+F_keys: ['feat']
+L_keys: ['labels_o']
+DATA_DIR: ['data/hico']
+
+TRAIN:
+  DATASET:
+    BATCH_SIZE: [180]
+    NUM_WORKERS: 4
+    SAMPLER_NAME: "priority_object"
+    JITTERING: True
+  MAX_EPOCH: 100
+  OPTIMIZER:
+    TYPE: SGD
+    RESUME: False
+    lr: 7e-3
+    momentum: 0.9
+    weight_decay: 1e-7
+    alpha: 0.99
+    eps: 1e-8
+    GROUP: 'ALL'
+    KW: 
+    KB: 
+  
+TEST:
+  BATCH_SIZE: 180
+  NUM_WORKERS: 4
+
+MODEL:
+  ACT: 'ReLU'
+  KEY: ['feat', 'labels_o']
+  SYN:
+    LAYER_SIZE: [4096, 3072, 2048]
+  LAYER_SIZE: [2048, 768, 512]
+  NUM_CLASSES: 117
+  BN: True
+  UNSUP_FAC: 0
+  CHECKPOINT: 
+    
+  
