@@ -2,7 +2,9 @@
 
 Xinpeng Liu*, Yong-lu Li*, Cewu Lu (* for equal contribution)
 
-Accepted to AAAI-2022
+Accepted to AAAI-2022 
+
+[Paper](https://www.aaai.org/AAAI22Papers/AAAI-1021.LiuX.pdf)
 
 Under construction
 
