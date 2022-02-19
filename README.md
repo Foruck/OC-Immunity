@@ -1,6 +1,6 @@
 # Code for "Highlighting Object Category Immunity for the Generalization of Human-Object Interaction Detection"
 
-Xinpeng Liu*, Yong-lu Li*, Cewu Lu
+Xinpeng Liu*, Yong-lu Li*, Cewu Lu (* for equal contribution)
 
 Accepted to AAAI-2022
 
