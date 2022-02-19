@@ -1,4 +1,7 @@
-# Code for "Highlighting Object Category Immunity for the Generalization of Human-Object Interaction Detection", Xinpeng Liu*, Yong-lu Li*, Cewu Lu, accepted to AAAI-2022
+# Code for "Highlighting Object Category Immunity for the Generalization of Human-Object Interaction Detection"
+
+Xinpeng Liu*, Yong-lu Li*, Cewu Lu, accepted to AAAI-2022
+Under construction
 
 ## Train
 
@@ -19,3 +22,9 @@ python train.py --config_path configs/unified.yml --exp unified
 ## Calculation of mPD
 
 Please refer to `HICO_DET_utils.py` for details.
+
+## TODO List
+
+- [ ] Data preparation script
+- [ ] Trained parameters
+- [ ] Code cleaning
